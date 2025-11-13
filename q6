@@ -1,0 +1,28 @@
+// 6. Program to delete a substring from a text
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char text[200], sub[50];
+    int i, j, k, found = 0;
+    printf("Enter main text: ");
+    gets(text);
+    printf("Enter substring to delete: ");
+    gets(sub);
+    for(i = 0; text[i] != '\0'; i++) {
+        found = 1;
+        for(j = 0; sub[j] != '\0'; j++) {
+            if(text[i + j] != sub[j]) {
+                found = 0;
+                break;
+            }
+        }
+        if(found) {
+            for(k = i; text[k + j] != '\0'; k++)
+                text[k] = text[k + j];
+            text[k] = '\0';
+            break;
+        }
+    }
+    printf("String after deletion: %s", text);
+    return 0;
+}
